@@ -44,12 +44,12 @@ class Photo(models.Model):
 	tags = models.ManyToManyField(PhotoTag)
 
 	def tag_string(self):
-		return "[{}]".format(", ".join(str(t) for t in self.tags.all()))
+		return "{}".format(", ".join(str(t) for t in self.tags.all()))
 
 	def admin_image(self):
 		return '<img src="{}" />'.format(self.image_thumbnail.url)
 	admin_image.allow_tags = True
 
 	def __str__(self):
-		return "[PHOTO] {}".format(self.tag_string())
+		return "[PHOTO] [{}]".format(self.tag_string())
 	
